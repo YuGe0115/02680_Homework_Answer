@@ -1,0 +1,331 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\begin{center}
+
+    {\Large \textbf{02-680 Essential Mathematics and Statistics}}
+    
+    \vspace{0.4em}
+    
+    {\large \textbf{Homework 2}}
+    
+    \vspace{0.7em}
+    
+
+    
+    \vspace{0.2em}
+    
+    Andrew ID: 
+    
+    \vspace{0.2em}
+    
+    September 26, 2026
+
+\end{center}
+
+\vspace{1em}
+
+
+\vspace{1em}
+
+\vspace{1em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Problem 1. Tuples and Graphs}
+
+\begin{enumerate}
+    \item[(a)]
+    \[
+    \begin{aligned}
+    E ={}&
+    \left\{
+    \{\langle p,q\rangle,\langle p,q+1\rangle\}
+    \mid
+    p\in\{1,\ldots,k\},\;
+    q\in\{1,\ldots,k\}
+    \right\} \\
+    &\cup
+    \left\{
+    \{\langle p,q\rangle,\langle p+1,q\rangle\}
+    \mid
+    p\in\{1,\ldots,k-1\},\;
+    q\in\{1,\ldots,k+1\}
+    \right\}.
+    \end{aligned}
+    \]
+
+    \item[(b)]
+    Since
+    \[
+    V=\{1,\ldots,k\}\times\{1,\ldots,k+1\},
+    \]
+    the size of the Cartesian product is the product of the
+    sizes of the two sets. Therefore,
+    \[
+    |V|
+    =
+    |\{1,\ldots,k\}|
+    \cdot
+    |\{1,\ldots,k+1\}|
+    =
+    k(k+1)
+    =
+    k^2+k.
+    \]
+
+    \item[(c)]
+    For $k=2$,
+    \[
+    V=
+    \{
+    \langle1,1\rangle,
+    \langle1,2\rangle,
+    \langle1,3\rangle,
+    \langle2,1\rangle,
+    \langle2,2\rangle,
+    \langle2,3\rangle
+    \}.
+    \]
+
+\begin{center}
+    \includegraphics[width=0.45\textwidth]{graph2.png}
+\end{center}
+
+    The degrees of the vertices are
+    \[
+    \operatorname{degree}_G(\langle1,1\rangle)=2,\qquad
+    \operatorname{degree}_G(\langle2,1\rangle)=2,
+    \]
+    \[
+    \operatorname{degree}_G(\langle1,2\rangle)=3,\qquad
+    \operatorname{degree}_G(\langle2,2\rangle)=3,
+    \]
+    \[
+    \operatorname{degree}_G(\langle1,3\rangle)=2,\qquad
+    \operatorname{degree}_G(\langle2,3\rangle)=2.
+    \]
+
+    Thus,
+    \[
+    \sum_{v\in V}\operatorname{degree}_G(v)
+    =
+    4(2)+2(3)
+    =
+    14.
+    \]
+
+    The graph has four horizontal edges and three vertical edges,
+    so
+    \[
+    |E|=4+3=7.
+    \]
+    Therefore,
+    \[
+    2|E|=2(7)=14
+    =
+    \sum_{v\in V}\operatorname{degree}_G(v).
+    \]
+
+\end{enumerate}
+
+\vspace{1em}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Problem 2. Graphs and Matrices}
+
+\begin{enumerate}
+    \item [(a)]
+    \begin{enumerate}
+        \item [i.]
+        Choose $n_1$ freely: $4$ choices. Once $n_1$ is fixed, $n_2$ may be any of the remaining
+        $3$ bases.
+        \[
+        |S|=4\cdot 3=12.
+        \]
+        \item[ii.] 
+        Yes. For example,
+        \[
+        f(\langle A,C\rangle)=C,\qquad f(\langle G,C\rangle)=C,
+        \]
+        For every $n_2\in\Sigma$, choose any $n_1\in\Sigma$ with $n_1\neq n_2$; then
+        $\langle n_1,n_2\rangle\in S$ and $f$ maps it to $n_2$. Hence every element of
+        $\Sigma$ is attained, so
+        \[
+        \operatorname{range}(f)=\Sigma.
+        \]
+        Thus the range equals the codomain.
+    \end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item[(b)]
+    \begin{enumerate}
+        \item [i.]
+        Build the tuple left to right: $n_1$ has $4$ choices, and for each $i\ge 2$, $n_i$
+        only needs to differ from $n_{i-1}$, giving 3 choices.
+        Therefore
+        \[
+        {c(k)=4\cdot 3^{\,k-1}\qquad (k\ge 1).}
+        \]
+        
+        \item[ii.]
+        \[
+        c(k)=4\cdot 3^{k-1}=\frac{4}{3}\cdot 3^k,
+        \]
+        
+        For all $k\ge 1$:
+        Taking $c=10$ gives $c(k)\le c\cdot 3^k$, so $c(k)\in O(3^k)$.
+        Taking $c'=1$ gives $c(k)\ge c'\cdot 3^k$, so $c(k)\in\Omega(3^k)$.
+        
+        Thus,
+        \[
+        {c(k)\in\Theta(3^k).}
+        \]
+    \end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Problem 3. Vectors and Matrices}
+
+\begin{enumerate}
+    \item [(a)]
+    \begin{enumerate}
+        \item [i.]
+        Given $D_X = \{g_1,g_2,g_3,g_5,g_7\}$ and $D_Y = \{g_2,g_3,g_4,g_6,g_7,g_8\}$:
+        \[
+        D_X\cap D_Y = \{g_2,g_3,g_7\}
+        \]
+        \[
+        D_X\cup D_Y = \{g_1,g_2,g_3,g_4,g_5,g_6,g_7,g_8\}
+        \]
+        
+        \item[ii.]
+        \[
+        \begin{array}{cc|c}
+        \chi_X(g) & \chi_Y(g) & \chi_X(g)\oplus\chi_Y(g) \\
+        \hline
+        0 & 0 & 0 \\
+        0 & 1 & 1 \\
+        1 & 0 & 1 \\
+        1 & 1 & 0
+        \end{array}
+        \]
+        Condition-specific genes: $\{g_1,g_4,g_5,g_6,g_8\}$.
+
+        Set-builder expression:
+        \[
+        (D_X \setminus D_Y)\cup(D_Y\setminus D_X)
+        \]
+        Verification:
+        $D_X\setminus D_Y=\{g_1,g_5\}$, $D_Y\setminus D_X=\{g_4,g_6,g_8\}$.
+        Their union $\{g_1,g_4,g_5,g_6,g_8\}$ gives exactly the same list.
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Problem 4. Matrices and Linear Systems}
+
+\begin{enumerate}
+    \item [(a)]
+    \begin{enumerate}
+        \item [i.]
+        \[
+        f(x) \in O(g(x)) \iff \exists x_0 \ge 0,\ \exists c > 0:\ \forall x \ge x_0,\ f(x) \le c\cdot g(x).
+        \]
+        
+        The negation of the right-hand side:
+        \begin{align*}
+        \neg\Big(\exists x_0 \ge 0,\ \exists c > 0:\ \forall x \ge x_0,\ f(x) \le c g(x)\Big)
+        &= \forall x_0 \ge 0,\ \neg\Big(\exists c > 0:\ \forall x \ge x_0,\ f(x) \le c g(x)\Big) \\
+        &= \forall x_0 \ge 0,\ \forall c > 0:\ \neg\Big(\forall x \ge x_0,\ f(x) \le c g(x)\Big) \\
+        &= \forall x_0 \ge 0,\ \forall c > 0:\ \exists x \ge x_0,\ \neg\big(f(x) \le c g(x)\big) \\
+        &= \forall x_0 \ge 0,\ \forall c > 0:\ \exists x \ge x_0,\ f(x) > c g(x).
+        \end{align*}
+        So $f(x)\notin O(g(x))$ means:
+        \[
+        {\forall x_0 \ge 0,\ \forall c > 0:\ \exists x \ge x_0,\ f(x) > c\cdot g(x)}.
+        \]
+
+        
+        \item[ii.]
+
+        Take any arbitrary $x_0\ge 0$ and any arbitrary constant $c>0$.
+        To prove $x^2 \notin O(x)$, we need to pick an $x \ge x_0$ such that $x^2 > c x$.
+        
+        Solve $x^2 > c x$. Since $x>0$, divide both sides by $x$:
+        \[
+        x > c.
+        \]
+        Choose $x = \max(x_0,\ c+1)$. It satifies that $x^2 > c x$.
+
+
+        By the negation from i., $x^2 \notin O(x)$.
+    \end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item [(b)]
+    \begin{enumerate}
+        \item [i.]
+        There exists constants $n_0\ge1$, $k=10$ such that
+        \[
+        \forall n\ge n_0,\  n \le k\cdot n.
+        \]
+        Thus
+        \[
+        \quad n\in O(n).
+        \]
+
+        We know:
+        \[
+        \log n \in O(n).
+        \]
+        Apply the product-rule property:
+        \[
+        (\log n)\cdot n \in O(n\cdot n) = O(n^2).
+        \]
+        Therefore $r(n)=n\log n \in O(n^2)$.
+        
+        \item[ii.]        
+        From i.: $n\log n \in O(n^2)$.
+        This means that $r(n)$ grows slower than or equal to $p(n)$.
+
+        
+        $p(n)=n^2$ is a polynomial, so $n^2\in O(2^n)$.
+        Thus $p(n)$ grows slower than or equal to $q(n)$.
+        
+        Order from slowest-growing to fastest-growing:
+        \[
+        {r(n)=n\log n,\quad p(n)=n^2,\quad q(n)=2^n}.
+        \]
+        The O relationships between each consecutive pair:
+        \[
+        n\log n \in O(n^2),  \quad  n^2\in O(2^n).
+        \]
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
