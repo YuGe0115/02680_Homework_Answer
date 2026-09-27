@@ -22,7 +22,7 @@
     
     \vspace{0.7em}
     
-
+   
     
     \vspace{0.2em}
     
@@ -30,7 +30,7 @@
     
     \vspace{0.2em}
     
-    September 26, 2026
+    September26, 2026
 
 \end{center}
 
@@ -150,53 +150,59 @@
 \textbf{Problem 2. Graphs and Matrices}
 
 \begin{enumerate}
-    \item [(a)]
-    \begin{enumerate}
-        \item [i.]
-        Choose $n_1$ freely: $4$ choices. Once $n_1$ is fixed, $n_2$ may be any of the remaining
-        $3$ bases.
-        \[
-        |S|=4\cdot 3=12.
-        \]
-        \item[ii.] 
-        Yes. For example,
-        \[
-        f(\langle A,C\rangle)=C,\qquad f(\langle G,C\rangle)=C,
-        \]
-        For every $n_2\in\Sigma$, choose any $n_1\in\Sigma$ with $n_1\neq n_2$; then
-        $\langle n_1,n_2\rangle\in S$ and $f$ maps it to $n_2$. Hence every element of
-        $\Sigma$ is attained, so
-        \[
-        \operatorname{range}(f)=\Sigma.
-        \]
-        Thus the range equals the codomain.
-    \end{enumerate}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item[(a)]
+    \[
+    E=
+    \{
+    \langle S_1,L_1\rangle,
+    \langle S_1,L_2\rangle,
+    \langle S_2,L_1\rangle,
+    \langle S_3,L_2\rangle
+    \}.
+    \]
+    
+    \[
+    |N_G^{out}(S_1)|=2,\qquad
+    |N_G^{out}(S_2)|=1,\qquad
+    |N_G^{out}(S_3)|=1.
+    \]
+    
     \item[(b)]
-    \begin{enumerate}
-        \item [i.]
-        Build the tuple left to right: $n_1$ has $4$ choices, and for each $i\ge 2$, $n_i$
-        only needs to differ from $n_{i-1}$, giving 3 choices.
-        Therefore
-        \[
-        {c(k)=4\cdot 3^{\,k-1}\qquad (k\ge 1).}
-        \]
-        
-        \item[ii.]
-        \[
-        c(k)=4\cdot 3^{k-1}=\frac{4}{3}\cdot 3^k,
-        \]
-        
-        For all $k\ge 1$:
-        Taking $c=10$ gives $c(k)\le c\cdot 3^k$, so $c(k)\in O(3^k)$.
-        Taking $c'=1$ gives $c(k)\ge c'\cdot 3^k$, so $c(k)\in\Omega(3^k)$.
-        
-        Thus,
-        \[
-        {c(k)\in\Theta(3^k).}
-        \]
-    \end{enumerate}
+    \[
+    M=
+    \begin{bmatrix}
+    1 & 1\\
+    1 & 0\\
+    0 & 1
+    \end{bmatrix}.
+    \]
+    
+    \item[(c)]
+    \[
+    M\mathbf{1}
+    =
+    \begin{bmatrix}
+    1 & 1\\
+    1 & 0\\
+    0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+    1\\
+    1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    2\\
+    1\\
+    1
+    \end{bmatrix}.
+    \]
+    
+    The $i$th entry of $M\mathbf{1}$ equals
+    $|N_G^{out}(S_i)|$ for $i=1,2,3$.
+    Multiplying by $\mathbf{1}$ sums the entries in each row of $M$.
+    Each $1$ in row $i$ represents an edge from $S_i$ to a lab,
+    so the row sum equals $|N_G^{out}(S_i)|$.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -205,38 +211,68 @@
 \textbf{Problem 3. Vectors and Matrices}
 
 \begin{enumerate}
-    \item [(a)]
-    \begin{enumerate}
-        \item [i.]
-        Given $D_X = \{g_1,g_2,g_3,g_5,g_7\}$ and $D_Y = \{g_2,g_3,g_4,g_6,g_7,g_8\}$:
-        \[
-        D_X\cap D_Y = \{g_2,g_3,g_7\}
-        \]
-        \[
-        D_X\cup D_Y = \{g_1,g_2,g_3,g_4,g_5,g_6,g_7,g_8\}
-        \]
-        
-        \item[ii.]
-        \[
-        \begin{array}{cc|c}
-        \chi_X(g) & \chi_Y(g) & \chi_X(g)\oplus\chi_Y(g) \\
-        \hline
-        0 & 0 & 0 \\
-        0 & 1 & 1 \\
-        1 & 0 & 1 \\
-        1 & 1 & 0
-        \end{array}
-        \]
-        Condition-specific genes: $\{g_1,g_4,g_5,g_6,g_8\}$.
-
-        Set-builder expression:
-        \[
-        (D_X \setminus D_Y)\cup(D_Y\setminus D_X)
-        \]
-        Verification:
-        $D_X\setminus D_Y=\{g_1,g_5\}$, $D_Y\setminus D_X=\{g_4,g_6,g_8\}$.
-        Their union $\{g_1,g_4,g_5,g_6,g_8\}$ gives exactly the same list.
-    \end{enumerate}
+    \item[(a)]
+    \[
+    \|g_1\|_2=\sqrt{3^2+4^2+0^2}=5,
+    \qquad
+    \|g_2\|_2=\sqrt{0^2+3^2+4^2}=5.
+    \]
+    
+    \[
+    g_1\cdot g_2
+    =3(0)+4(3)+0(4)
+    =12.
+    \]
+    
+    \item[(b)]
+    \[
+    M=
+    \begin{bmatrix}
+    3 & 4 & 0\\
+    0 & 3 & 4
+    \end{bmatrix},
+    \qquad
+    M^T=
+    \begin{bmatrix}
+    3 & 0\\
+    4 & 3\\
+    0 & 4
+    \end{bmatrix}.
+    \]
+    
+    \item[(c)]
+    \[
+    MM^T=
+    \begin{bmatrix}
+    3 & 4 & 0\\
+    0 & 3 & 4
+    \end{bmatrix}
+    \begin{bmatrix}
+    3 & 0\\
+    4 & 3\\
+    0 & 4
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    25 & 12\\
+    12 & 25
+    \end{bmatrix}.
+    \]
+    
+    The diagonal entries are
+    $\|g_1\|_2^2=\|g_2\|_2^2=25$,
+    and the off-diagonal entries are
+    $g_1\cdot g_2=g_2\cdot g_1=12$.
+    
+    Also,
+    \[
+    (MM^T)^T=MM^T,
+    \]
+    so $MM^T$ is symmetric. This makes sense since
+    \[
+    (MM^T)_{ij}=g_i\cdot g_j
+    \]
+    and $g_i\cdot g_j=g_j\cdot g_i$.
 \end{enumerate}
 
 
@@ -249,83 +285,112 @@
 \textbf{Problem 4. Matrices and Linear Systems}
 
 \begin{enumerate}
-    \item [(a)]
-    \begin{enumerate}
-        \item [i.]
-        \[
-        f(x) \in O(g(x)) \iff \exists x_0 \ge 0,\ \exists c > 0:\ \forall x \ge x_0,\ f(x) \le c\cdot g(x).
-        \]
-        
-        The negation of the right-hand side:
-        \begin{align*}
-        \neg\Big(\exists x_0 \ge 0,\ \exists c > 0:\ \forall x \ge x_0,\ f(x) \le c g(x)\Big)
-        &= \forall x_0 \ge 0,\ \neg\Big(\exists c > 0:\ \forall x \ge x_0,\ f(x) \le c g(x)\Big) \\
-        &= \forall x_0 \ge 0,\ \forall c > 0:\ \neg\Big(\forall x \ge x_0,\ f(x) \le c g(x)\Big) \\
-        &= \forall x_0 \ge 0,\ \forall c > 0:\ \exists x \ge x_0,\ \neg\big(f(x) \le c g(x)\big) \\
-        &= \forall x_0 \ge 0,\ \forall c > 0:\ \exists x \ge x_0,\ f(x) > c g(x).
-        \end{align*}
-        So $f(x)\notin O(g(x))$ means:
-        \[
-        {\forall x_0 \ge 0,\ \forall c > 0:\ \exists x \ge x_0,\ f(x) > c\cdot g(x)}.
-        \]
+    \item[(a)]
+    \[
+    A=
+    \begin{bmatrix}
+    1 & 2\\
+    3 & -1
+    \end{bmatrix},
+    \qquad
+    \mathbf{x}=
+    \begin{bmatrix}
+    x\\
+    y
+    \end{bmatrix},
+    \qquad
+    b=
+    \begin{bmatrix}
+    5\\
+    1
+    \end{bmatrix}.
+    \]
 
-        
-        \item[ii.]
-
-        Take any arbitrary $x_0\ge 0$ and any arbitrary constant $c>0$.
-        To prove $x^2 \notin O(x)$, we need to pick an $x \ge x_0$ such that $x^2 > c x$.
-        
-        Solve $x^2 > c x$. Since $x>0$, divide both sides by $x$:
-        \[
-        x > c.
-        \]
-        Choose $x = \max(x_0,\ c+1)$. It satifies that $x^2 > c x$.
-
-
-        By the negation from i., $x^2 \notin O(x)$.
-    \end{enumerate}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    \item [(b)]
-    \begin{enumerate}
-        \item [i.]
-        There exists constants $n_0\ge1$, $k=10$ such that
-        \[
-        \forall n\ge n_0,\  n \le k\cdot n.
-        \]
-        Thus
-        \[
-        \quad n\in O(n).
-        \]
-
-        We know:
-        \[
-        \log n \in O(n).
-        \]
-        Apply the product-rule property:
-        \[
-        (\log n)\cdot n \in O(n\cdot n) = O(n^2).
-        \]
-        Therefore $r(n)=n\log n \in O(n^2)$.
-        
-        \item[ii.]        
-        From i.: $n\log n \in O(n^2)$.
-        This means that $r(n)$ grows slower than or equal to $p(n)$.
-
-        
-        $p(n)=n^2$ is a polynomial, so $n^2\in O(2^n)$.
-        Thus $p(n)$ grows slower than or equal to $q(n)$.
-        
-        Order from slowest-growing to fastest-growing:
-        \[
-        {r(n)=n\log n,\quad p(n)=n^2,\quad q(n)=2^n}.
-        \]
-        The O relationships between each consecutive pair:
-        \[
-        n\log n \in O(n^2),  \quad  n^2\in O(2^n).
-        \]
-    \end{enumerate}
+    \[
+    A\mathbf{x}=b.
+    \]
+    
+    \item[(b)]
+    \[
+    |A|=1(-1)-2(3)=-7.
+    \]
+    
+    To compute $A^{-1}$,
+    \[
+    \left[
+    \begin{array}{cc|cc}
+    1 & 2 & 1 & 0\\
+    3 & -1 & 0 & 1
+    \end{array}
+    \right]
+    \xrightarrow{R_2\leftarrow R_2-3R_1}
+    \left[
+    \begin{array}{cc|cc}
+    1 & 2 & 1 & 0\\
+    0 & -7 & -3 & 1
+    \end{array}
+    \right]
+    \]
+    
+    \[
+    \xrightarrow{R_2\leftarrow-\frac{1}{7}R_2}
+    \left[
+    \begin{array}{cc|cc}
+    1 & 2 & 1 & 0\\
+    0 & 1 & \frac{3}{7} & -\frac{1}{7}
+    \end{array}
+    \right]
+    \xrightarrow{R_1\leftarrow R_1-2R_2}
+    \left[
+    \begin{array}{cc|cc}
+    1 & 0 & \frac{1}{7} & \frac{2}{7}\\
+    0 & 1 & \frac{3}{7} & -\frac{1}{7}
+    \end{array}
+    \right].
+    \]
+    
+    Therefore,
+    \[
+    A^{-1}
+    =
+    \begin{bmatrix}
+    \frac{1}{7} & \frac{2}{7}\\
+    \frac{3}{7} & -\frac{1}{7}
+    \end{bmatrix}.
+    \]
+    
+    \item[(c)]
+    \[
+    \mathbf{x}
+    =
+    A^{-1}b
+    =
+    \begin{bmatrix}
+    \frac{1}{7} & \frac{2}{7}\\
+    \frac{3}{7} & -\frac{1}{7}
+    \end{bmatrix}
+    \begin{bmatrix}
+    5\\
+    1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    1\\
+    2
+    \end{bmatrix}.
+    \]
+    
+    Therefore,
+    \[
+    x=1,\qquad y=2.
+    \]
+    
+    Verification:
+    \[
+    1+2(2)=5,
+    \qquad
+    3(1)-2=1.
+    \]
 \end{enumerate}
 
 \end{document}
